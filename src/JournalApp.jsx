@@ -1,10 +1,10 @@
 import React from "react";
-
+import { AppTheme } from "./theme";
+import { AppRouter } from "./router/AppRouter";
 export const JournalApp = () => {
   return (
-    <>
-      <h1>Journal App</h1>
-      <hr />
-    </>
+    <AppTheme>
+      <AppRouter />
+    </AppTheme>
   );
 };

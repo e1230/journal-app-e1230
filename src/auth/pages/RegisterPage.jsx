@@ -5,15 +5,36 @@ import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../hooks";
 
 export const RegisterPage = () => {
-  const { email, password, onInputChange, displayName, formState } = useForm({
-    email: "emaurobel1230@hotmail.com",
-    password: "850518",
-    displayName: "Edgar Beltrán",
-  });
+  const {
+    email,
+    password,
+    onInputChange,
+    displayName,
+    formState,
+    isFormValid,
+    displayNameValid,
+    emailValid,
+    passwordValid,
+  } = useForm(
+    {
+      email: "emaurobel1230@hotmail.com",
+      password: "850518",
+      displayName: "Edgar Beltrán",
+    },
+    formValidations
+  );
 
   const onSubmit = (event) => {
     event.preventDefault();
     console.log(formState);
+  };
+  const formValidations = {
+    email: [(value) => value.includes("@"), "El correo debe tener un arroba"],
+    password: [
+      (value) => value.length >= 6,
+      "El password debe de tener + de 6 letras",
+    ],
+    displayName: [(value) => value.length >= 1, "El nombre es requerido"],
   };
   return (
     <AuthLayout title="Crear cuenta">
@@ -27,6 +48,8 @@ export const RegisterPage = () => {
               name="displayName"
               value={displayName}
               onChange={onInputChange}
+              error={!displayNameValid}
+              helperText={displayNameValid}
               fullWidth
             />
           </Grid>

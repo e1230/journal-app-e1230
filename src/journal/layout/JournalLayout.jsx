@@ -9,7 +9,7 @@ const JournalLayout = ({ children }) => {
       {/* Sidebar */}
       <SideBar drawerWidth={drawerWidth} />
 
-      <Box component="main" sx={{ flexgrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
         {children}
       </Box>
